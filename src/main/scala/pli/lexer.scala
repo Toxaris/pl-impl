@@ -4,20 +4,24 @@ import java.io.Reader
 
 trait TokenType
 
-case object ClassKeyword extends TokenType
+case object ClosingBrace extends TokenType
 case object ClosingParenthesis extends TokenType
-case object DefKeyword extends TokenType
+case object ElseKeyword extends TokenType
 case object EndOfFile extends TokenType
 case object EqualsOperator extends TokenType
+case object ExtendsKeyword extends TokenType
 case object Identifier extends TokenType
 case object IfKeyword extends TokenType
 case object IntegerLiteral extends TokenType
 case object MinusOperator extends TokenType
 case object ObjectKeyword extends TokenType
+case object OpeningBrace extends TokenType
 case object OpeningParenthesis extends TokenType
 case object PlusOperator extends TokenType
+case object PrintKeyword extends TokenType
+case object Semicolon extends TokenType
 case object TimesOperator extends TokenType
-case object TraitKeyword extends TokenType
+case object VarKeyword extends TokenType
 case object WhileKeyword extends TokenType
 
 object Lexer {
@@ -142,6 +146,18 @@ class Lexer(input: Reader) {
         skipNextCodepoint()
         nextTokenType = ClosingParenthesis
 
+      case '{' =>
+        skipNextCodepoint()
+        nextTokenType = OpeningBrace
+
+      case '}' =>
+        skipNextCodepoint()
+        nextTokenType = ClosingBrace
+
+      case ';' =>
+        skipNextCodepoint()
+        nextTokenType = Semicolon
+
       case _ if atDigit =>
         readNextCodepoint()
         while (atDigit) {
@@ -158,11 +174,12 @@ class Lexer(input: Reader) {
         }
         nextTokenType =
           nextTokenText.toString match {
-            case "class" => ClassKeyword
-            case "def" => DefKeyword
+            case "else" => ElseKeyword
+            case "extends" => ExtendsKeyword
             case "if" => IfKeyword
             case "object" => ObjectKeyword
-            case "trait" => TraitKeyword
+            case "print" => PrintKeyword
+            case "var" => VarKeyword
             case "while" => WhileKeyword
             // TODO: throw error on unknown keywords
             case _ => Identifier
