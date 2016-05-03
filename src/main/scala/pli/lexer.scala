@@ -7,6 +7,7 @@ trait TokenType
 case object ClassKeyword extends TokenType
 case object ClosingParenthesis extends TokenType
 case object DefKeyword extends TokenType
+case object EndOfFile extends TokenType
 case object EqualsOperator extends TokenType
 case object Identifier extends TokenType
 case object IfKeyword extends TokenType
@@ -18,7 +19,6 @@ case object PlusOperator extends TokenType
 case object TimesOperator extends TokenType
 case object TraitKeyword extends TokenType
 case object WhileKeyword extends TokenType
-case object EndOfFile extends TokenType
 
 object Lexer {
   def forString(text: String): Lexer =
