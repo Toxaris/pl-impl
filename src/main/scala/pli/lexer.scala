@@ -11,13 +11,10 @@ case object EqualsOperator extends TokenType
 case object Identifier extends TokenType
 case object IfKeyword extends TokenType
 case object IntegerLiteral extends TokenType
-case object MinusEqualsOperator extends TokenType
 case object MinusOperator extends TokenType
 case object ObjectKeyword extends TokenType
 case object OpeningParenthesis extends TokenType
-case object PlusEqualsOperator extends TokenType
 case object PlusOperator extends TokenType
-case object TimesEqualsOperator extends TokenType
 case object TimesOperator extends TokenType
 case object TraitKeyword extends TokenType
 case object WhileKeyword extends TokenType
@@ -171,8 +168,20 @@ class Lexer(input: Reader) {
             case _ => Identifier
           }
 
-      // TODO: accept operators
-      // TODO: throw error on unknown operators
+     case _ if atOperatorCharacter =>
+        readNextCodepoint()
+        while (atOperatorCharacter) {
+          readNextCodepoint()
+        }
+        nextTokenType =
+          nextTokenText.toString match {
+            case "+" => PlusOperator
+            case "-" => MinusOperator
+            case "*" => TimesOperator
+            case "=" => EqualsOperator
+            case _ => throw new Error("Unknown token '" + nextTokenText + "'")
+          }
+
       case _ =>
         throw new Error("unknown token")
     }
@@ -193,6 +202,35 @@ class Lexer(input: Reader) {
     codepoint == 0x005F
   }
 
+  /** Determine whether the given code point is an operator
+    * character according to the Scala Language Specification,
+    * Chapter 1.
+    */
+  def isOperatorCharacter(codepoint: Int): Boolean = {
+    val category = Character.getType(codepoint)
+
+    codepoint == 0x0021 ||
+    codepoint == 0x0023 ||
+    codepoint == 0x0025 ||
+    codepoint == 0x0026 ||
+    codepoint == 0x002A ||
+    codepoint == 0x002B ||
+    codepoint == 0x002D ||
+    codepoint == 0x002F ||
+    codepoint == 0x003A ||
+    codepoint == 0x003C ||
+    codepoint == 0x003D ||
+    codepoint == 0x003E ||
+    codepoint == 0x003F ||
+    codepoint == 0x0040 ||
+    codepoint == 0x005C ||
+    codepoint == 0x003E ||
+    codepoint == 0x007C ||
+    codepoint == 0x007E ||
+    category == Character.MATH_SYMBOL ||
+    category == Character.OTHER_SYMBOL
+  }
+
   /** Determine whether the given code point is a digit according
     * to the Scala Language Specification, Chapter 1.
     */
@@ -211,4 +249,11 @@ class Lexer(input: Reader) {
     */
   def atDigit: Boolean =
     isDigit(nextCodepoint)
+
+  /** Determine whether the next code point in the input is an
+    * operator character according to the Scala Language
+    * Specification, Chapter 1.
+    */
+  def atOperatorCharacter: Boolean =
+    isOperatorCharacter(nextCodepoint)
 }
