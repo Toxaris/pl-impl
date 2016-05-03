@@ -181,7 +181,14 @@ class Lexer(input: Reader) {
             case "print" => PrintKeyword
             case "var" => VarKeyword
             case "while" => WhileKeyword
-            // TODO: throw error on unknown keywords
+            case "abstract" | "case" | "catch" | "class" | "def"
+               | "do" | "false" | "final" | "finally" | "for"
+               | "forSome" | "implicit" | "import" | "lazy"
+               | "match" | "new" | "null" | "override"
+               | "package" | "private" | "protected" | "return"
+               | "sealed" | "super" | "this" | "throw" | "trait"
+               | "try" | "true" | "type" | "val" | "with" | "yield" =>
+              throw new Error("Unsupported keyword '" + nextTokenText + "'")
             case _ => Identifier
           }
 
