@@ -268,7 +268,7 @@ class Lexer(input: Reader) {
   def atLetter: Boolean =
     isLetter(nextCodepoint)
 
-      /** Determine whether the next code point in the input is a digit
+  /** Determine whether the next code point in the input is a digit
     * according to the Scala Language Specification, Chapter 1.
     */
   def atDigit: Boolean =
