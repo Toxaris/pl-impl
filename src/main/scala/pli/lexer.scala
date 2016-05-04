@@ -280,4 +280,30 @@ class Lexer(input: Reader) {
     */
   def atOperatorCharacter: Boolean =
     isOperatorCharacter(nextCodepoint)
+
+  /** Determine whether the next token has the specified type,
+    * but don't process that token.
+    */
+  def at(tokenType: TokenType): Boolean =
+    nextTokenType == tokenType
+
+  /** Determine whether the next token has the specified type,
+    * and process it if it does.
+    */
+  def check(tokenType: TokenType): Boolean = {
+    val result = at(tokenType)
+    if (result) {
+      readNextToken()
+    }
+    result
+  }
+
+  /** Process the next token if it has the specified type,
+    * and throw an error if it doesn't.
+    */
+  def expect(tokenType: TokenType) {
+    if (!check(tokenType)) {
+      throw new Error("Unexpected token")
+    }
+  }
 }
