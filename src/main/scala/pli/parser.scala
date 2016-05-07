@@ -1,5 +1,20 @@
 package pli
 
+/** Factory methods for creating [[Parser parsers]]. */
+object Parser {
+  /** Creates a parser for the source code in the given file. */
+  def forLexer(lexer: Lexer): Parser =
+    new Parser(lexer)
+
+  /** Creates a parser for the given source code. */
+  def forString(text: String): Parser =
+    forLexer(Lexer.forString(text))
+
+  /** Creates a parser for the given lexer. */
+  def forFile(filename: String): Parser =
+    forLexer(Lexer.forFile(filename))
+}
+
 class Parser(lexer: Lexer) {
   import lexer._
 
