@@ -78,6 +78,9 @@ case object WhileKeyword extends TokenType
 object Lexer {
   def forString(text: String): Lexer =
     new Lexer(new java.io.StringReader(text))
+
+  def forFile(filename: String): Lexer =
+    new Lexer(new java.io.FileReader(filename))
 }
 
 class Lexer(input: Reader) {
