@@ -2,26 +2,77 @@ package pli
 
 import java.io.Reader
 
+/** $doc1 $doc2
+  *
+  * Each token type is implemented as a case object, see “Known
+  * Subclasses” below for a list.
+  *
+  * @define doc1 Used by the [[Lexer lexer]] to classify
+  * @define doc2 tokens in the token stream.
+  */
 trait TokenType
 
+/** $doc1 “`}`” $doc2 */
 case object ClosingBrace extends TokenType
+
+/** $doc1 “`)`” $doc2 */
 case object ClosingParenthesis extends TokenType
+
+/** $doc1 “`else`” $doc2 */
 case object ElseKeyword extends TokenType
+
+/** $doc1 the end of the token stream. */
 case object EndOfFile extends TokenType
+
+/** $doc1 “`=`” $doc2 */
 case object EqualsOperator extends TokenType
+
+/** $doc1 “`extends`” $doc2 */
 case object ExtendsKeyword extends TokenType
+
+/** $doc1 identifier $doc2
+  *
+  * The name of the identifier is available from
+  * [[Lexer.nextTokenText]].*/
 case object Identifier extends TokenType
+
+/** $doc1 “`if`” $doc2 */
 case object IfKeyword extends TokenType
+
+/** $doc1 integer literal $doc2
+  *
+  * The value of the integer literal is available from
+  * [[Lexer.nextTokenIntegerValue]].*/
 case object IntegerLiteral extends TokenType
+
+/** $doc1 “`-`” $doc2 */
 case object MinusOperator extends TokenType
+
+/** $doc1 “`object`” $doc2 */
 case object ObjectKeyword extends TokenType
+
+/** $doc1 “`{`” $doc2 */
 case object OpeningBrace extends TokenType
+
+/** $doc1 “`(`” $doc2 */
 case object OpeningParenthesis extends TokenType
+
+/** $doc1 “`+`” $doc2 */
 case object PlusOperator extends TokenType
+
+/** $doc1 “`print`” $doc2 */
 case object PrintKeyword extends TokenType
+
+/** $doc1 “`;`” $doc2 */
 case object Semicolon extends TokenType
+
+/** $doc1 “`*`” $doc2 */
 case object TimesOperator extends TokenType
+
+/** $doc1 “`var`” $doc2 */
 case object VarKeyword extends TokenType
+
+/** $doc1 “`while`” $doc2 */
 case object WhileKeyword extends TokenType
 
 object Lexer {
