@@ -9,6 +9,10 @@
   *   - [[Lexer]] ─ Turns a stream of characters into a stream of tokens
   *   - [[Parser]] ─ Turns a stream of tokens into an abstract syntax tree
   *
+  * Helper components:
+  *
+  *   - [[Pretty]] ─ Turns an abstract syntax tree back into a string
+  *
   * Main data structures:
   *
   *   - [[TokenType]] ─ Types of tokens in the token stream
