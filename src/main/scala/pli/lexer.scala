@@ -392,7 +392,11 @@ class Lexer(input: Reader) {
     */
   def expect(tokenType: TokenType) {
     if (!check(tokenType)) {
-      throw new Error("Unexpected token")
+      if (at(EndOfFile)) {
+        throw new Error("Unexpected end of file")
+      } else {
+        throw new Error("Unexpected token")
+      }
     }
   }
 }
