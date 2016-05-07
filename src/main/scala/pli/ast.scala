@@ -73,7 +73,7 @@ case class Print(value: Expression) extends Statement
 /** $doc3.
   * @define phrase `while` `(` [[condition]] `)` [[body]]
   */
-case class While(condition: Expression, body: Statement) extends Statement
+case class While(condition: Expression, body: Seq[Statement]) extends Statement
 
 /** $doc3.
   *
@@ -85,7 +85,7 @@ case class While(condition: Expression, body: Statement) extends Statement
   * “`if` `(` [[condition]] `)` [[thenBranch]] `else`
   * [[elseBranch]]`
   */
-case class If(condition: Expression, thenBranch: Statement, elseBranch: Statement) extends Statement
+case class If(condition: Expression, thenBranch: Seq[Statement], elseBranch: Seq[Statement]) extends Statement
 
 /** $doc2.
   * @define phrase `{` [[body]] `}`

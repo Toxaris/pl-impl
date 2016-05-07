@@ -59,6 +59,16 @@ class Parser(lexer: Lexer) {
     Program(name, superclass, body.result)
   }
 
+  /** Parses sequence of statements in braces. */
+  def parseBody: Seq[Statement] = {
+    expect(OpeningBrace)
+    val body = Seq.newBuilder[Statement]
+    while (!check(ClosingBrace)) {
+      body += parseStatement
+    }
+    body.result
+  }
+
   /** Parses statements. */
   def parseStatement: Statement = {
     if (check(VarKeyword)) {
@@ -83,25 +93,22 @@ class Parser(lexer: Lexer) {
       expect(OpeningParenthesis)
       val condition = parseExpression
       expect(ClosingParenthesis)
-      val body = parseStatement
+      val body = parseBody
       While(condition, body)
     } else if (check(IfKeyword)) {
       expect(OpeningParenthesis)
       val condition = parseExpression
       expect(ClosingParenthesis)
-      val thenBranch = parseStatement
+      val thenBranch = parseBody
       if (check(ElseKeyword)) {
-        val elseBranch = parseStatement
+        val elseBranch = parseBody
         If(condition, thenBranch, elseBranch)
       } else {
-        If(condition, thenBranch, Block(Seq()))
+        If(condition, thenBranch, Seq())
       }
-    } else if (check(OpeningBrace)) {
-      val body = Seq.newBuilder[Statement]
-      while (!check(ClosingBrace)) {
-        body += parseStatement
-      }
-      Block(body.result)
+    } else if (at(OpeningBrace)) {
+      val body = parseBody
+      Block(body)
     } else {
       throw new Error("unexpected " + nextTokenType)
     }

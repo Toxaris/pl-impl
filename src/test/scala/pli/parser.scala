@@ -141,50 +141,33 @@ class ParserSpec extends Spec with ASTMatchers {
 
   it should "accept while loops" in {
     val result = statement("""
-      |while (1)
+      |while (1) {
       |  print(2);
+      |}
       |""")
     result should be (a [While])
   }
 
   it should "accept if-then-else statements" in {
     val result = statement("""
-      |if (1)
+      |if (1) {
       |  print(2);
-      |else
+      |} else {
       |  print(3);
+      |}
       |""")
     result should be (an [If])
   }
 
   it should "accept if-then statements" in {
     val result = statement("""
-      |if (1)
+      |if (1) {
       |  print(2);
+      |}
       |""")
     result should be (an [If])
     inside(result) { case result: If =>
-      result.elseBranch should be (a [Block])
-      inside (result.elseBranch) { case elseBranch: Block =>
-        elseBranch.body should be (empty)
-      }
-    }
-  }
-
-  it should "associate dangling else branches to the nearest if" in {
-    val result = statement("""
-      |if (1)
-      |  if (2) {
-      |  } else
-      |    print(3);
-      |""")
-    result should be (an [If])
-    inside(result) { case result: If =>
-      result.elseBranch should be (a [Block])
-      result.thenBranch should be (an [If])
-      inside(result.thenBranch) { case thenBranch: If =>
-        thenBranch.elseBranch should be (a [Print])
-      }
+      result.elseBranch should be (empty)
     }
   }
 
@@ -201,7 +184,7 @@ class ParserSpec extends Spec with ASTMatchers {
     val result = program("""
       |object foo extends bar {
       |  print(1);
-      | print(2);
+      |  print(2);
       |}
       |""")
     result.body should have (length(2))
