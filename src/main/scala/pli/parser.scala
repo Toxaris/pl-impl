@@ -103,7 +103,7 @@ class Parser(lexer: Lexer) {
       }
       Block(body.result)
     } else {
-      throw new Error("unexpected token")
+      throw new Error("unexpected " + nextTokenType)
     }
   }
 
