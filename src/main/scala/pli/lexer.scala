@@ -75,14 +75,49 @@ case object VarKeyword extends TokenType
 /** $doc1 “`while`” $doc2 */
 case object WhileKeyword extends TokenType
 
+/** Factory methods for creating [[pli.Parser parsers]]. */
 object Lexer {
+  /** Creates a lexer for the given source code. */
   def forString(text: String): Lexer =
     new Lexer(new java.io.StringReader(text))
 
+  /** Creates a lexer for the source code in the given file. */
   def forFile(filename: String): Lexer =
     new Lexer(new java.io.FileReader(filename))
 }
 
+/** Turns a stream of characters into a stream of tokens.
+  *
+  * To create a lexer, use the companion object’s [[Lexer.forFile
+  * `forFile`]] or [[Lexer.forString `forString`]] methods.
+  *
+  * The lexer is the first main componenent in the language
+  * implementation. It reads a stream of characters from a file,
+  * or for testing, from a string. It produces a stream of tokens
+  * which is further processed by the [[Parser parser]].
+  *
+  * The lexer classifies tokens according to their [[TokenType
+  * token type]]. The token type of the next token in the token
+  * stream is available from [[nextTokenType]].
+  *
+  * The lexer keeps track of line and column positions inside the
+  * source code. The first character of the source code is line 1
+  * and column 1. The location of the beginning of the next token
+  * is available from [[startLine]] and [[startColumn]]. The
+  * location of the first character after the next token is
+  * available from [[currentLine]] and [[currentColumn]].
+  *
+  * Most token types classify a fixed string such as an operator
+  * or keyword. The following token types are special:
+  *
+  *   - [[EndOfFile]] ─ Used for every position after
+  *     the last token in the stream
+  *   - [[Identifier]] ─ The name of the identifier is
+  *     available from [[nextTokenText]]
+  *   - [[IntegerLiteral]] ─ The value of the integer
+  *     literal is available from [[nextTokenIntegerValue]]
+
+  */
 class Lexer(input: Reader) {
   // invariants:
   //
