@@ -88,9 +88,9 @@ case class While(condition: Expression, body: Statement) extends Statement
 case class If(condition: Expression, thenBranch: Statement, elseBranch: Statement) extends Statement
 
 /** $doc2.
-  * @define phrase `{` [[statements]] `}`
+  * @define phrase `{` [[body]] `}`
   */
-case class Block(statements: Seq[Statement]) extends Statement
+case class Block(body: Seq[Statement]) extends Statement
 
 /** $doc2.
   *
