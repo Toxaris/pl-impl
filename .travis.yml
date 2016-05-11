@@ -11,8 +11,5 @@ before_cache:
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
 
-deploy:
-  provider: script
-  script: deploy.sh
-  on:
-    branch: master
+after_success:
+  - if [ $TRAVIS_BRANCH == 'master' ]; then deploy.sh; fi
