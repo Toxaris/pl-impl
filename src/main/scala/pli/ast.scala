@@ -24,15 +24,11 @@ package pli
   *
   * @define doc1
   * Nodes of the [[ASTNode abstract syntax tree]]
-  *
   * @define doc2
   * $doc1 $nonterminal
-  *
   * @define doc3
   * $doc2 of the form “$phrase”
-  *
   * @define nonterminal
-  *
   * @define subclasses
   * The concrete nodes $nonterminal of the abstract syntax tree are
   * implemented by case classes extending this trait, see “Known
@@ -110,7 +106,7 @@ case class Variable(name: String) extends Expression
   */
 case class Literal(value: Int) extends Expression
 
-/** $doc3
+/** $doc3.
   * @define phrase [[lhs]] `+` [[rhs]]
   */
 case class Addition(lhs: Expression, rhs: Expression) extends Expression
