@@ -10,3 +10,9 @@ cache:
 before_cache:
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    branch: master
