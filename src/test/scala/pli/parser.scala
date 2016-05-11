@@ -1,6 +1,6 @@
 package pli
 
-class ParserSpec extends Spec with ASTMatchers {
+class ParserSpec extends Spec {
   def parser(text: String): Parser =
     Parser.forString(text.stripMargin)
 
