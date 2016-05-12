@@ -12,4 +12,4 @@ before_cache:
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
 
 after_success:
-  - if [ $TRAVIS_BRANCH == 'master' ]; then ./deploy.sh; fi
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && ./deploy.sh
