@@ -8,6 +8,8 @@ The [Toxaris/pl-impl](http://github.com/Toxaris/pl-impl) repository on GitHub co
 "Implementation of Programming Languages" course at Tübingen
 University. It is (or will be when finished) an implementation of
 a simple programming language.
+More information is available in the
+[API documentation](http://toxaris.github.io/pl-impl/api)
 
 ## Object language
 
