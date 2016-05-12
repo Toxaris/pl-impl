@@ -42,7 +42,7 @@ git config --global user.name "Tillmann Rendel (via Travis)"
 # commit website changes
 pushd gh-pages
 git add index.md
-git add api
+git add --all api
 git commit -m "Update website." -m "Based on $HEAD."
 
 # push to github
