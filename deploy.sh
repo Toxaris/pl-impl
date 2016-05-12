@@ -2,7 +2,7 @@
 set -ev
 
 # decrypt deployment key
-openssl aes-256-cbc -K $encrypted_0828caebfda7_key -iv $encrypted_0828caebfda7_iv -in deploy-key.enc -out ~/.ssh/deploy-key -d
+openssl aes-256-cbc -K $encrypted_19acf01d4bba_key -iv $encrypted_19acf01d4bba_iv -in deploy-key.enc -out ~/.ssh/deploy-key -d
 chmod 600 ~/.ssh/deploy-key
 
 # configure ssh
