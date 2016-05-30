@@ -1,10 +1,10 @@
 package pli
 
-import java.io.PrintStream
+import java.io.PrintWriter
 
 /** Factory methods for creating [[Pretty pretty printers]]. */
 object Pretty {
-  def toPrintStream(out: PrintStream) =
+  def toPrintWriter(out: PrintWriter) =
     new Pretty(out)
 }
 
@@ -17,7 +17,7 @@ object Pretty {
   * implementation. It can be used during debugging to print out
   * abstract syntax trees for manual inspection.
   */
-class Pretty(out: PrintStream) {
+class Pretty(out: PrintWriter) {
   /** Current indentation level */
   var level = 0
 
