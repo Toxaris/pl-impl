@@ -11,7 +11,7 @@ object Pretty {
 /** Turns an abstract syntax tree back into a string.
   *
   * To create a pretty printer, use the companion object’s
-  * [[Pretty#toPrintStream `toPrintStream`]] method.
+  * [[Pretty#toPrintWriter `toPrintWriter`]] method.
   *
   * The pretty printer is a helper component in the language
   * implementation. It can be used during debugging to print out
