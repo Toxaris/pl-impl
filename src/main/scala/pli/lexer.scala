@@ -75,7 +75,7 @@ case object VarKeyword extends TokenType
 /** $doc1 “`while`” $doc2 */
 case object WhileKeyword extends TokenType
 
-/** Factory methods for creating [[pli.Parser parsers]]. */
+/** Factory methods for creating [[Lexer lexers]]. */
 object Lexer {
   /** Creates a lexer for the given source code. */
   def forString(text: String): Lexer =

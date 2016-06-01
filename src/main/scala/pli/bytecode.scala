@@ -2,8 +2,9 @@ package pli
 
 import collection.mutable;
 
-/** Factory methods for [Bytecode] instances. */
+/** Factory methods for [[Bytecode]] instances. */
 object Bytecode {
+  /** Creates an empty bytecode builder. */
   def apply() =
     new Bytecode
 }
