@@ -341,7 +341,7 @@ class BytecodeSpec extends Spec {
 
   // exit
 
-  "Bytecode.exit" should "append am exit instruction" in {
+  "Bytecode.exit" should "append an exit instruction" in {
     val bc = Bytecode()
     bc.exit()
     bc.result(0) should be (Opcode.exit)
