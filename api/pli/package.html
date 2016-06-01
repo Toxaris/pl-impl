@@ -49,7 +49,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An implementation of a small subset of Scala.</p><p>The code in this package is part of the course material for
 the course “Implementation of Programming Languages” at
-Tübingen University, Germany.</p><p>Main components:</p><ul><li><a href="Lexer.html" class="extype" name="pli.Lexer">Lexer</a> ─ Turns a stream of characters into a stream of tokens</li><li><a href="Parser.html" class="extype" name="pli.Parser">Parser</a> ─ Turns a stream of tokens into an abstract syntax tree</li></ul><p>Helper components:</p><ul><li><a href="Pretty.html" class="extype" name="pli.Pretty">Pretty</a> ─ Turns an abstract syntax tree back into a string</li></ul><p>Main data structures:</p><ul><li><a href="TokenType.html" class="extype" name="pli.TokenType">TokenType</a> ─ Types of tokens in the token stream</li><li><a href="ASTNode.html" class="extype" name="pli.ASTNode">ASTNode</a> ─ Nodes of the abstract syntax tree
+Tübingen University, Germany.</p><p>Main components:</p><ul><li><a href="Lexer.html" class="extype" name="pli.Lexer">Lexer</a> ─ Turns a stream of characters into a stream of tokens</li><li><a href="Parser.html" class="extype" name="pli.Parser">Parser</a> ─ Turns a stream of tokens into an abstract syntax tree</li><li><a href="Interpreter.html" class="extype" name="pli.Interpreter">Interpreter</a> ─ Executes abstract syntax trees directly</li><li><a href="CodeGenerator.html" class="extype" name="pli.CodeGenerator">CodeGenerator</a> ─ Generates simple bytecode from abstract syntax trees</li><li><a href="VM.html" class="extype" name="pli.VM">VM</a> ─ Executes bytecode</li></ul><p>Helper components:</p><ul><li><a href="Pretty.html" class="extype" name="pli.Pretty">Pretty</a> ─ Turns an abstract syntax tree back into a string</li></ul><p>Main data structures:</p><ul><li><a href="TokenType.html" class="extype" name="pli.TokenType">TokenType</a> ─ Types of tokens in the token stream</li><li><a href="ASTNode.html" class="extype" name="pli.ASTNode">ASTNode</a> ─ Nodes of the abstract syntax tree</li><li><a href="Table.html" class="extype" name="pli.Table">Table</a> ─ Scoped associated array, used for environments and symbol tables</li><li><a href="Bytecode.html" class="extype" name="pli.Bytecode">Bytecode</a> ─ Builder for bytecode arrays, with support for backpatching</li><li><a href="Opcode$.html" class="extype" name="pli.Opcode">Opcode</a> ─ Opcodes and documentation for bytecode instructions
 </li></ul></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -199,7 +199,7 @@ intermediate traits in the inheritance hierarchy.</p></div></div>
       </a>
     </span>
       <p class="shortcomment cmt">Code generator.</p>
-    </li><li name="pli.DebugVM" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="pli.DebugVM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DebugVMextendsVM"></a>
       <a id="DebugVM:DebugVM"></a>
       <h4 class="signature">
@@ -215,7 +215,10 @@ intermediate traits in the inheritance hierarchy.</p></div></div>
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">A variant of the <a href="VM.html" class="extype" name="pli.VM">virtual machine</a> that prints one line
+of debugging output for every instruction executed.</p><div class="fullcomment"><div class="comment cmt"><p>A variant of the <a href="VM.html" class="extype" name="pli.VM">virtual machine</a> that prints one line
+of debugging output for every instruction executed.</p><p>To create a debug virtual machine, use the <a href="DebugVM$.html" class="extype" name="pli.DebugVM">companion object</a>’s apply methods.
+</p></div></div>
     </li><li name="pli.Expression" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ExpressionextendsASTNode"></a>
       <a id="Expression:Expression"></a>
@@ -507,7 +510,7 @@ Subclasses” below for a list.</p></div></div>
     </span>
       <p class="shortcomment cmt">Used by the <a href="Lexer.html" class="extype" name="pli.Lexer">lexer</a> to classify tokens in the token stream.</p><div class="fullcomment"><div class="comment cmt"><p>Used by the <a href="Lexer.html" class="extype" name="pli.Lexer">lexer</a> to classify tokens in the token stream.</p><p>Each token type is implemented as a case object, see “Known
 Subclasses” below for a list.</p></div></div>
-    </li><li name="pli.VM" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="pli.VM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="VMextendsAnyRef"></a>
       <a id="VM:VM"></a>
       <h4 class="signature">
@@ -523,7 +526,9 @@ Subclasses” below for a list.</p></div></div>
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Simple virtual machine, that is, bytecode interpreter.</p>
+      <p class="shortcomment cmt">Simple virtual machine, that is, bytecode interpreter.</p><div class="fullcomment"><div class="comment cmt"><p>Simple virtual machine, that is, bytecode interpreter.</p><p>To create a virtual machine, use the <a href="VM$.html" class="extype" name="pli.VM">companion
+object</a>’s apply methods.</p><p>For debugging, consider to use a <a href="DebugVM.html" class="extype" name="pli.DebugVM">debug virtual
+machine</a> instead.</p></div></div>
     </li><li name="pli.Value" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ValueextendsAnyRef"></a>
       <a id="Value:Value"></a>
@@ -618,7 +623,7 @@ Subclasses” below for a list.
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Factory methods for [Bytecode] instances.</p>
+      <p class="shortcomment cmt">Factory methods for <a href="Bytecode.html" class="extype" name="pli.Bytecode">Bytecode</a> instances.</p>
     </li><li name="pli.ClosingBrace" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ClosingBrace"></a>
       <a id="ClosingBrace:ClosingBrace"></a>
@@ -669,7 +674,7 @@ Subclasses” below for a list.
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Factory methods for creating debug virtual machines.</p>
+      <p class="shortcomment cmt">Factory methods for creating <a href="DebugVM.html" class="extype" name="pli.DebugVM">debug virtual machines</a>.</p>
     </li><li name="pli.ElseKeyword" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ElseKeyword"></a>
       <a id="ElseKeyword:ElseKeyword"></a>
@@ -807,7 +812,7 @@ Subclasses” below for a list.
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Factory methods for creating <a href="Parser.html" class="extype" name="pli.Parser">parsers</a>.</p>
+      <p class="shortcomment cmt">Factory methods for creating <a href="Lexer.html" class="extype" name="pli.Lexer">lexers</a>.</p>
     </li><li name="pli.MinusOperator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MinusOperator"></a>
       <a id="MinusOperator:MinusOperator"></a>
@@ -1028,7 +1033,7 @@ Subclasses” below for a list.
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Factory methods for creating virtual machines.</p>
+      <p class="shortcomment cmt">Factory methods for creating <a href="VM.html" class="extype" name="pli.VM">virtual machines</a>.</p>
     </li><li name="pli.VarKeyword" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="VarKeyword"></a>
       <a id="VarKeyword:VarKeyword"></a>

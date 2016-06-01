@@ -51,7 +51,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A variant of the <a href="VM.html" class="extype" name="pli.VM">virtual machine</a> that prints one line
+of debugging output for every instruction executed.</p><p>To create a debug virtual machine, use the <a href="DebugVM$.html" class="extype" name="pli.DebugVM">companion object</a>’s apply methods.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="VM.html" class="extype" name="pli.VM">VM</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -223,7 +225,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">adress in the bytecode array to read next</p><div class="fullcomment"><div class="comment cmt"><p>adress in the bytecode array to read next</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">The adress in the bytecode array to read next.</p><div class="fullcomment"><div class="comment cmt"><p>The adress in the bytecode array to read next.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -274,7 +276,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="pli.DebugVM">DebugVM</a> → <a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Executes one already fetched and decoded bytecode instruction.</p><div class="fullcomment"><div class="comment cmt"><p>Executes one already fetched and decoded bytecode instruction.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="pli.DebugVM">DebugVM</a> → <a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="pli.VM#fetch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fetch():Int"></a>
       <a id="fetch():Int"></a>
@@ -291,7 +293,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">fetches next integer from the bytecode array</p><div class="fullcomment"><div class="comment cmt"><p>fetches next integer from the bytecode array</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Fetches next integer from the bytecode array.</p><div class="fullcomment"><div class="comment cmt"><p>Fetches next integer from the bytecode array.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -331,7 +333,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Fetches a value from an arbitrary offset in the virtual machine's stack.</p><div class="fullcomment"><div class="comment cmt"><p>Fetches a value from an arbitrary offset in the virtual machine's stack.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -450,7 +452,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Pops a value from the virtual machine's stack.</p><div class="fullcomment"><div class="comment cmt"><p>Pops a value from the virtual machine's stack.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="pli.VM#push" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="push(value:Int):Unit"></a>
       <a id="push(Int):Unit"></a>
@@ -467,7 +469,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Pushes a value to the virtual machine's stack.</p><div class="fullcomment"><div class="comment cmt"><p>Pushes a value to the virtual machine's stack.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="pli.VM#put" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="put(offset:Int,value:Int):Unit"></a>
       <a id="put(Int,Int):Unit"></a>
@@ -484,7 +486,10 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Stores a value at an arbitrary offset in the virtual
+machine's stack.</p><div class="fullcomment"><div class="comment cmt"><p>Stores a value at an arbitrary offset in the virtual
+machine's stack. The value previously stored there is
+overwritten with the given value.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="pli.VM#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="run():Unit"></a>
       <a id="run():Unit"></a>
@@ -501,7 +506,9 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Fetches, decodes and executes bytecode instructions until an
+<code>exit</code> instruction is executed.</p><div class="fullcomment"><div class="comment cmt"><p>Fetches, decodes and executes bytecode instructions until an
+<code>exit</code> instruction is executed.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="pli.VM#running" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="running:Boolean"></a>
       <a id="running:Boolean"></a>
@@ -518,7 +525,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">whether we are currently running.</p><div class="fullcomment"><div class="comment cmt"><p>whether we are currently running.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Whether we are currently running.</p><div class="fullcomment"><div class="comment cmt"><p>Whether we are currently running.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="pli.VM#stack" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stack:scala.collection.mutable.Stack[Int]"></a>
       <a id="stack:Stack[Int]"></a>
@@ -535,7 +542,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">stack</p><div class="fullcomment"><div class="comment cmt"><p>stack</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">The virtual machine's stack.</p><div class="fullcomment"><div class="comment cmt"><p>The virtual machine's stack.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="pli.VM#step" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="step():Unit"></a>
       <a id="step():Unit"></a>
@@ -552,7 +559,7 @@
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
+      <p class="shortcomment cmt">Fetches, decodes and executes one bytecode instruction.</p><div class="fullcomment"><div class="comment cmt"><p>Fetches, decodes and executes one bytecode instruction.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="VM.html" class="extype" name="pli.VM">VM</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
