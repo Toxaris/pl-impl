@@ -20,7 +20,8 @@ class CodeGenerator {
     stacksize - table(name)
 
   /** Generates bytecode for the statements in a block. */
-  def generate(statements: Seq[Statement]) {
+  def generate(statements: Seq[Statement]): Int = {
+    val result = bytecode.adress
     table.enter()
     for (statement <- statements) {
       generate(statement)
@@ -29,9 +30,8 @@ class CodeGenerator {
       bytecode.pop()
     }
     table.leave()
+    result
   }
-
-  // TODO let generate return the adress of the first opcode generated
 
   /** Generates bytecode for an AST node.
     *
@@ -44,7 +44,8 @@ class CodeGenerator {
     * newly declared variable on the stack, the bytecode for
     * other statements does not affect the stack.
     */
-  def generate(node: ASTNode) {
+  def generate(node: ASTNode): Int = {
+    val result = bytecode.adress
     node match {
       case Program(_, _, body) =>
         generate(body)
@@ -91,8 +92,7 @@ class CodeGenerator {
 
       case While(condition, body) =>
         val adressOfCondition =
-          bytecode.adress
-        generate(condition)
+          generate(condition)
         val jumpToAfterLoop =
           bytecode.ifeq()
         stacksize -= 1
@@ -112,8 +112,7 @@ class CodeGenerator {
         val jumpToAfterIf =
           bytecode.goto()
         val adressOfThenBranch =
-          bytecode.adress
-        generate(thenBranch)
+          generate(thenBranch)
         val adressAfterIf =
           bytecode.adress
 
@@ -123,6 +122,7 @@ class CodeGenerator {
       case Block(body) =>
         generate(body)
     }
+    result
   }
 }
 
