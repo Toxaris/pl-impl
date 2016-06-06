@@ -1,8 +1,5 @@
 package pli
 
-import collection.mutable
-import mutable.Stack
-
 /** Factory methods for creating [[VM virtual machines]]. */
 object VM {
   /** Create a virtual machine for the given bytecode. */
@@ -51,7 +48,7 @@ class VM(bytecode: Array[Int]) {
   var codepointer = 0
 
   /** The virtual machine's stack. */
-  var stack = Stack[Int]()
+  var stack = Stack()
 
   /** Whether we are currently running. */
   var running = false
