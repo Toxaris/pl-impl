@@ -1,7 +1,5 @@
 package pli
 
-import collection.mutable;
-
 /** Factory methods for [[Bytecode]] instances. */
 object Bytecode {
   /** Creates an empty bytecode builder. */
@@ -10,34 +8,11 @@ object Bytecode {
 }
 
 /** Builder for bytecode arrays. */
-class Bytecode {
-  /** The buffer for the bytecode array. */
-  var buffer = new Array[Int](1)
-
+class Bytecode extends Buffer {
   /** The adress of the next element that is added to the bytecode
     * array. */
-  var adress = 0
+  def adress = length
 
-  /** Ensures that the buffer is big enough to contain the given adress. */
-  def resize(adress: Int) {
-    var size = buffer.size
-    while (adress >= size) {
-      size *= 2
-    }
-
-    if (size > buffer.size) {
-      val old = buffer
-      buffer = new Array[Int](size)
-      old.copyToArray(buffer)
-    }
-  }
-
-  /** Modifies the entry in the bytecode array at the specified
-    * adress. */
-  def put(adress: Int, value: Int) {
-    resize(adress)
-    buffer(adress) = value
-  }
 
   /** Patches a jump distance belonging to a jump instruction at
     * the given adress. */
@@ -48,15 +23,10 @@ class Bytecode {
   /** Appends an integer to the bytecode array and returns the
     * adress of the newly added integer. */
   def append(value: Int): Int = {
-    val result = adress
+    val result = length
     put(adress, value)
-    adress += 1
     result
   }
-
-  /** Returns the array. */
-  def result =
-    buffer.take(adress)
 
   /** Appends an `iadd` instruction and returns the adress of the
     * newly added instructon. */

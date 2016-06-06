@@ -47,23 +47,32 @@ class BytecodeSpec extends Spec {
 
   it should "keep the old array contents" in  {
     val bc = Bytecode()
-    bc.resize(2)
     bc.append(27)
     bc.append(42)
     bc.append(117)
     val oldContents = bc.result
     bc.resize(100)
     val newContents = bc.result
-    newContents should be (oldContents)
+    newContents.take(oldContents.length) should be (oldContents)
   }
 
-  it should "not do anything if the buffer is already big enough" in {
+  it should "not allocate anything if the buffer is already big enough" in {
     val bc = Bytecode()
     bc.resize(100)
     val oldBuffer = bc.buffer
     bc.resize(42)
     val newBuffer = bc.buffer
     newBuffer should be (oldBuffer)
+  }
+
+  it should "update the length if necessary" in {
+    val bc = Bytecode()
+    bc.resize(200)
+    bc.length should be (201)
+    bc.resize(100)
+    bc.length should be (201)
+    bc.resize(1003)
+    bc.length should be (1004)
   }
 
   // iadd
